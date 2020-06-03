@@ -9,10 +9,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const targetNode = document.querySelector('.notion-peek-renderer .notion-scroller.vertical').parentElement.firstElementChild.firstChild.firstElementChild
             targetNode.style.backgroundColor = color
             targetNode.style.borderRadius = '6px'
-            if(value === 'false') {
-                document.querySelectorAll('.notion-peek-renderer .notion-scroller.vertical > div')[1].innerHTML = ''
-                document.querySelectorAll('.notion-peek-renderer .notion-scroller.vertical > div')[2].innerHTML = ''
-            }
+            const display = value === 'false' ? 'none' : 'block'
+            document.querySelectorAll('.notion-peek-renderer .notion-scroller.vertical > div')[1].style.display = display
+            document.querySelectorAll('.notion-peek-renderer .notion-scroller.vertical > div')[2].style.display = display
         }
     }, 100)
 
