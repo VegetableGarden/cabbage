@@ -1,0 +1,36 @@
+{
+	"manifest_version": 2,
+	"name": "collapsices",
+	"version": "0.0.1",
+	"description": "A extensions to collapse notion properties",
+	"icons":
+	{
+		"16": "img/collapsices.png",
+		"48": "img/collapsices.png",
+		"128": "img/collapsices.png"
+	},
+	"background":
+	{
+		"page": "background.html"
+	},
+	"page_action":
+	{
+		"default_icon": "img/collapsices.png",
+		"default_title": "Collapse notion properties",
+		"default_popup": "popup.html"
+	},
+	"content_scripts":
+	[
+		{
+			"matches": ["https://www.notion.so/**"],
+			"js": ["lib/jquery.js", "js/global.js", "js/content-scripts.js"],
+			"css": ["css/content-css.css"],
+			"run_at": "document_start"
+		}
+	],
+	"permissions":
+	[
+		"storage",
+		"declarativeContent"
+	]
+}
