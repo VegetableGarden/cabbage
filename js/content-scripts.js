@@ -3,15 +3,21 @@ document.addEventListener('DOMContentLoaded', () => {
     document.onkeydown = toggleShowProperties
 
     setInterval(() => {
+        const value =  localStorage.getItem('toggle-show-properties')
+        const display = value === 'false' ? 'none' : 'block'
         if(document.querySelectorAll('.notion-peek-renderer .notion-scroller.vertical > div').length !== 0) {
-            const value =  localStorage.getItem('toggle-show-properties')
             const color = value === 'false' ? 'rgba(130, 247, 237, 0.82)' : 'rgba(238, 247, 69, 0.89)'
             const targetNode = document.querySelector('.notion-peek-renderer .notion-scroller.vertical').parentElement.firstElementChild.firstChild.firstElementChild
             targetNode.style.backgroundColor = color
             targetNode.style.borderRadius = '6px'
-            const display = value === 'false' ? 'none' : 'block'
             document.querySelectorAll('.notion-peek-renderer .notion-scroller.vertical > div')[1].style.display = display
             document.querySelectorAll('.notion-peek-renderer .notion-scroller.vertical > div')[2].style.display = display
+        }
+
+        const innerPage = document.querySelector('.notion-frame .notion-scroller.vertical.horizontal')
+        if(innerPage) {
+            innerPage.childNodes[1].style.display = display
+            innerPage.childNodes[1].style.display = display
         }
     }, 100)
 
